@@ -1,0 +1,24 @@
+services:
+  # BASE DE DATOS
+  mysql8:
+    container_name: mysql8
+    image: mysql:8
+    ports:
+      - "3306:3306"
+    environment:
+      MYSQL_ROOT_PASSWORD: tarah723
+      MYSQL_DATABASE: jwt_authentication
+    volumes:
+      - data-mysql:/var/lib/mysql
+    restart: always
+    networks:
+      - jwt_authentication
+#VOLUMENES
+volumes:
+  data-mysql:
+    name: data-mysql
+# REDES
+networks:
+  jwt_authentication:
+    name: jwt_authentication
+    external: true
